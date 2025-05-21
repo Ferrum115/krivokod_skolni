@@ -9,7 +9,6 @@ import com.example.youtubedownloader.screens.MainScreen
 import com.example.youtubedownloader.screens.SettingsScreen
 import com.example.youtubedownloader.ui.theme.YouTubeDownloaderTheme
 import com.example.youtubedownloader.ui.TopBar
-from "../../../../../../../../server/main.py" import *
 
 
 enum class AppScreen {

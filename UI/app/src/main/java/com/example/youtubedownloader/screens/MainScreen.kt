@@ -11,6 +11,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.foundation.background
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+from download_file.kt import *
 
 
 @Preview(showBackground = true)
@@ -66,7 +67,20 @@ fun MainScreen() {
         Button(
             onClick = {
                 // TODO: Implement video download logic
-
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    // Android 10+: сохраняем в Downloads без запроса разрешений
+                } else {
+                    // Запросить WRITE_EXTERNAL_STORAGE для версий ниже Android 10
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                        REQUEST_CODE_STORAGE
+                    )
+                }
+                //доделать
+                val fileUrl = "https://example.com/file.pdf"
+                val fileName = "document.pdf"
+                downloadFile(requireContext(), fileUrl, fileName)
             },
             modifier = Modifier.fillMaxWidth()
         ) {
